@@ -23,9 +23,12 @@
 - &nbsp;&nbsp;&nbsp;&nbsp;[1.2.3、解决方案](#solution)
 - &nbsp;&nbsp;&nbsp;&nbsp;[1.2.4、效果](#result)
 - [2、单例模式(Singleton)](#singleton)
-- &nbsp;&nbsp;[2.1、问题](#issue-singleton)
-- &nbsp;&nbsp;[2.2、解决](#solution-singleton)
-- &nbsp;&nbsp;[2.3、效果](#result-singleton)
+- &nbsp;&nbsp;[2.1、概念](#what-is-singleton)
+- &nbsp;&nbsp;[2.2、特点](#feature-singleton)
+- &nbsp;&nbsp;[2.3、适合场景](#when-use-singleton)
+- &nbsp;&nbsp;[2.4、问题](#issue-singleton)
+- &nbsp;&nbsp;[2.5、解决](#solution-singleton)
+- &nbsp;&nbsp;[2.6、效果总结](#result-singleton)
 
 <h2 id="pattern">1、模式简介</h2>
 
@@ -69,7 +72,18 @@ Martin Flower 也赞同模式命名至关重要,因为模式的目的之一就�
 
 <h2 id="singleton">2、单例模式</h2>
 
-<h5 id="issue-singleton">2.1、问题</h5>
+<h5 id="what-is-singleton">2.1、概念</h5>
+保证一个类仅有一个实例，并且提供一个访问它的全局访问点。单例又分懒汉、饿汉（PHP不支持）、登记式。
+
+<h5 id="feature-singleton">2.2、特点</h5>
+
+1、一个类只有一个实例
+
+2、它必须自行创建这个实例
+
+3、必须自行向整个系统提供这个实例
+
+<h5 id="issue-singleton">2.3、问题</h5>
 
 假设现在有一个保存应用信息的类Preference,我们可以用它来保存如用户信息的字符串、文件路径等。这些信息在你每次调用时候都可能有所不同。类似一个“公告板”，它是可以被系统中其他无关对象设置和获取信息的中心。
 
@@ -77,7 +91,7 @@ Martin Flower 也赞同模式命名至关重要,因为模式的目的之一就�
 
 我们还需要保证系统中所有对象都使用的同一个Preference对象。
 
-<h5 id="solution-singleton">2.2、解决</h5>
+<h5 id="solution-singleton">2.4、解决</h5>
 
 我们可以从强制控制对象的实例化开始。
 
@@ -129,4 +143,4 @@ $pref2 = Preference::getInstance();
 echo $pref2->getProperty("name");//输出xujiajun  key为name的属性值并没有丢失。
 
 ```
-另外,PHP中不支持饿汉式的单例模式。因为PHP不支持在类定义时给类的成员变量赋予非基本类型的值。如表达式，new操作等
+
