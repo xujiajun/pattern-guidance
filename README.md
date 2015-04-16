@@ -76,3 +76,51 @@ Martin Flower 也赞同模式命名至关重要,因为模式的目的之一就�
 但是问题来了，如果在对象中直接传递Preference,让原来并不使用Preference对象的类强制接受Preference对象，会产生耦合。
 
 我们还需要保证系统中所有对象都使用的同一个Preference对象。
+
+<h5 id="solution-singleton">2.2、解决</h5>
+
+我们可以从强制控制对象的实例化开始。
+
+```php
+
+<?php 
+
+class Preference
+{
+    private $props = array();
+
+    private static $instance;
+
+    private function __construct()
+    {
+
+    }
+
+    public static function getInstance()
+    {
+        if (empty(self::$instance)) {
+            self::$instance = new Preference();
+        }
+
+        return self::$instance;
+    }
+
+    public function setProperty($key,$val)
+    {
+        $this->props[$key] = $val;
+    }
+
+    public function getProperty($key)
+    {
+        return $this->props[$key];
+    }
+}
+
+$pref = Preference::getInstance();
+$pref->setProperty("name","xujiajun");
+unset($pref);
+$pref2 = Preference::getInstance();
+echo $pref2->getProperty("name");//输出xujiajun  key为name的属性值并没有丢失。
+
+```
+另外,PHP中不支持饿汉式的单例模式。因为PHP不支持在类定义时给类的成员变量赋予非基本类型的值。如表达式，new操作等
