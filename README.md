@@ -15,16 +15,19 @@
 
 <h2>目录</h2>
 
-- [1、模式](#pattern)
+- [1、模式简介](#pattern)
 - &nbsp;&nbsp;[1.1、什么是模式](#what-is-pattern)
 - &nbsp;&nbsp;[1.2、模式概览](#pattern-overview)
 - &nbsp;&nbsp;&nbsp;&nbsp;[1.2.1、命名](#name)
 - &nbsp;&nbsp;&nbsp;&nbsp;[1.2.2、问题](#issue)
 - &nbsp;&nbsp;&nbsp;&nbsp;[1.2.3、解决方案](#solution)
 - &nbsp;&nbsp;&nbsp;&nbsp;[1.2.4、效果](#result)
+- [2、单例模式(Singleton)](#singleton)
+- &nbsp;&nbsp;[2.1、问题](#issue-singleton)
+- &nbsp;&nbsp;[2.2、解决](#solution-singleton)
+- &nbsp;&nbsp;[2.3、效果](#result-singleton)
 
-
-<h2 id="pattern">1、模式</h2>
+<h2 id="pattern">1、模式简介</h2>
 
 <h5 id="what-is-pattern">1.1、什么是模式</h5>
 
@@ -63,3 +66,5 @@ Martin Flower 也赞同模式命名至关重要,因为模式的目的之一就�
 <h5 id="result">1.2.4、效果</h5>
 
 在设计代码的时候，你所做的每一个决定都会带来不同的结果。当然我们总是希望得到令人满意的针对问题的解决方案。解决方案一旦部署，理想情况下它也许非常适合与其他模式一同工作。但是也要留心是否会带来风险。
+
+<h2 id="singleton">2、单例模式</h2>
