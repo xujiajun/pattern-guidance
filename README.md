@@ -90,12 +90,18 @@ class Preference
     private $props = array();
 
     private static $instance;
-
+    
+    //防止外界实例化对象
     private function __construct()
     {
 
     }
+    //防止外界clone实例
+    private function __clone()
+    {
 
+    }
+    
     public static function getInstance()
     {
         if (empty(self::$instance)) {
