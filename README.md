@@ -29,6 +29,13 @@
 - &nbsp;&nbsp;[2.4、问题](#issue-singleton)
 - &nbsp;&nbsp;[2.5、解决](#solution-singleton)
 - &nbsp;&nbsp;[2.6、效果总结](#result-singleton)
+- [3、工厂方法模式(FactoryMethod)](#factoryMethod)
+- &nbsp;&nbsp;[3.1、概念](#what-is-factoryMethod)
+- &nbsp;&nbsp;[3.2、特点](#feature-factoryMethod)
+- &nbsp;&nbsp;[3.3、适合场景](#when-use-factoryMethod)
+- &nbsp;&nbsp;[3.4、问题](#issue-factoryMethod)
+- &nbsp;&nbsp;[3.5、解决](#solution-factoryMethod)
+- &nbsp;&nbsp;[3.6、效果总结](#result-factoryMethod)
 
 <h2 id="pattern">1、模式简介</h2>
 
