@@ -379,3 +379,10 @@ class MegaCommsManger extends CommManager
 我们从上面的实现来看,创建类与产品层次结构式非常相似的。这h是使用工厂方法模式常见的结果。这形成一种特殊的代码重复吧。
 
 另一方面，该模式可能会鼓励不必要的子类化。
+
+<h2 id="abstractFactory">4、抽象工厂模式(AbstractFactory</h2>
+
+<h5 id="what-is-abstractFactory">4.1、概念</h5>
+
+提供一个创建一系列相关或相互依赖对象的接口，而无需指定他们具体的类。
+
