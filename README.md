@@ -368,3 +368,8 @@ class MegaCommsManger extends CommManager
     }
 }
 ```
+<h5 id="result-factoryMethod">3.5、效果总结</h5>
+
+我们从上面的实现来看,创建类与产品层次结构式非常相似的。这h是使用工厂方法模式常见的结果。这形成一种特殊的代码重复吧。
+
+另一方面，该模式可能会鼓励不必要的子类化。
