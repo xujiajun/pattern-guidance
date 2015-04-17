@@ -31,11 +31,10 @@
 - &nbsp;&nbsp;[2.6、效果总结](#result-singleton)
 - [3、工厂方法模式(FactoryMethod)](#factoryMethod)
 - &nbsp;&nbsp;[3.1、概念](#what-is-factoryMethod)
-- &nbsp;&nbsp;[3.2、特点](#feature-factoryMethod)
-- &nbsp;&nbsp;[3.3、适合场景](#when-use-factoryMethod)
-- &nbsp;&nbsp;[3.4、问题](#issue-factoryMethod)
-- &nbsp;&nbsp;[3.5、解决](#solution-factoryMethod)
-- &nbsp;&nbsp;[3.6、效果总结](#result-factoryMethod)
+- &nbsp;&nbsp;[3.2、适合场景](#when-use-factoryMethod)
+- &nbsp;&nbsp;[3.3、问题](#issue-factoryMethod)
+- &nbsp;&nbsp;[3.4、解决](#solution-factoryMethod)
+- &nbsp;&nbsp;[3.5、效果总结](#result-factoryMethod)
 
 <h2 id="pattern">1、模式简介</h2>
 
@@ -164,6 +163,14 @@ echo $pref2->getProperty("name");//输出xujiajun  key为name的属性值并没�
 
 <h2 id="factoryMethod">工厂方法模式</h2>
 
-<h2 id=="">概念</h2>
+<h5 id="what-is-factoryMethod">3.1、概念</h5>
 
 它是一种实现了“工厂”概念的面向对象设计模式。定义一个创建对象的接口，但让实现这个接口的类来决定实例化哪个类。工厂方法让类的实例化推迟到子类中进行。
+
+<h5 id="when-use-factoryMethod">3.2、适合场景</h5>
+
+1、当一个类不知道它所必须创建的对象的类的时候
+
+2、当一个类希望由它的子类来指定它所创建的对象的时候
+
+3、当类将创建对象的职责委托给多个帮助子类的某一个，并且你希望将哪一个帮助子类是代理者这一信息局部化的时候
