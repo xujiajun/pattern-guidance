@@ -174,3 +174,80 @@ echo $pref2->getProperty("name");//输出xujiajun  key为name的属性值并没�
 2、当一个类希望由它的子类来指定它所创建的对象的时候
 
 3、当类将创建对象的职责委托给多个帮助子类的某一个，并且你希望将哪一个帮助子类是代理者这一信息局部化的时候
+
+<h5 id="issue-factoryMethod">3.3、问题</h5>
+
+假设现在有一个关于个人事务管理的项目，其功能之一是管理Appointment对象。需要一个BloggsCal的格式来和他们进行交流预约相
+
+关数据。同时业务团队提醒将来会有更加多的数据格式。
+
+在接口级别上，我们可以立即定义两个类。其一是需要一个数据编码器来把Appointment对象转换成专有的格式,这里我们命名成ApptEncoder这个类；另外需要一个管理类来获得编码器,并使用编码器与第三方进行通信，我们将这个管理类命名成CommsManager类。
+
+用模式的角色来描述：这个CommsManager类为创建者（creator）,而ApptEncoder是产品（product)
+
+那么，如何得到一个真正的具体的ApptEncoder对象？
+
+
+```php
+
+abstract class ApptEncoder
+{
+    abstract function encode();
+}
+
+class BlogApptEncoder extends ApptEncoder
+{
+    function encode()
+    {
+        return "Appointment data encoded in BloggsCal\n";
+    }
+}
+
+class CommsManager
+{
+    function getApptEncoder()
+    {
+        return new BlogApptEncoder();
+    }
+}
+```
+当我们的业务团队说要加一个格式MegaCal时。我们调整代码:
+
+```php
+class CommsManager
+{
+    const BLOGGS = 1;
+    const MEGA = 2;
+    private $mode = 1;
+    
+    function __construct($mode)
+    {
+        $this->mode = $mode;
+    }
+    
+    function getApptEncoder()
+    {
+        switch($this->mode)
+        {
+            case(self::MEGA):
+                return new MegaApptEncoder();
+            default:
+                return new BlogApptEncoder();
+        }
+    }
+}
+
+class MegaApptEncoder extends ApptEncoder
+{
+    function encode()
+    {
+        return "Appointment data encoded in MegaCal\n";
+    }
+}
+
+//client
+$comms = new CommsManger(CommsManger::MEGA);
+$apptEncoder = $comms->getApptEncoder();
+echo $apptEncoder->encode();//Appointment data encoded in MegaCal
+```
+
