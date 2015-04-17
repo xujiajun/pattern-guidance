@@ -35,6 +35,12 @@
 - &nbsp;&nbsp;[3.3、问题](#issue-factoryMethod)
 - &nbsp;&nbsp;[3.4、解决](#solution-factoryMethod)
 - &nbsp;&nbsp;[3.5、效果总结](#result-factoryMethod)
+- [4、抽象工厂模式(AbstractFactory)](#abstractFactory)
+- &nbsp;&nbsp;[4.1、概念](#what-is-abstractFactory)
+- &nbsp;&nbsp;[4.2、适合场景](#when-use-abstractFactory)
+- &nbsp;&nbsp;[4.3、问题](#issue-abstractFactory)
+- &nbsp;&nbsp;[4.4、解决](#solution-abstractFactory)
+- &nbsp;&nbsp;[4.5、效果总结](#result-abstractFactory)
 
 <h2 id="pattern">1、模式简介</h2>
 
