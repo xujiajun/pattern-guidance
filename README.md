@@ -250,4 +250,52 @@ $comms = new CommsManger(CommsManger::MEGA);
 $apptEncoder = $comms->getApptEncoder();
 echo $apptEncoder->encode();//Appointment data encoded in MegaCal
 ```
+不要觉得这样已经很完美了。如果现在使用的协议要求提供页眉和页脚数据来描述每次预约,情况又如何。请看代码:
+
+```php
+
+class CommsManger
+{
+    const BLOGGS = 1;
+    const MEGA = 2;
+    private $mode = 1;
+    
+    function __construct($mode)
+    {
+        $this->mode = $mode;
+    }
+    
+    function getHeaderText()
+    {
+        switch($this->mode)
+        {
+            case (self::MEGA):
+                return "Mega ..header";
+            default:
+                return "Blogger header";
+        }
+    }
+    
+    function getApptEncoder()
+    {
+        switch($this->mode)
+        {
+            case(self::MEGA):
+                return new MegaApptEncoder();
+            default:
+                return new BlogApptEncoder();
+        }
+    }
+}
+```
+
+从上面代码发现没有，如果我还要加页脚的方法，oh my god！工作量上去了，而且bad smell。
+
+总结下问题:
+
+1、在代码运行时，我们才知道要生成的对象类型(BlogsApptEncoder或者MegaApptEncoder);
+
+2、我们需要能够相对轻松地加入一些新的产品类型
+
+3、每一个产品类型都要可定制的功能，如上面的页眉页脚。
 
