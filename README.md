@@ -46,7 +46,6 @@
 - &nbsp;&nbsp;[5.2、适合场景](#when-use-prototype)
 - &nbsp;&nbsp;[5.3、问题](#issue-prototype)
 - &nbsp;&nbsp;[5.4、解决](#solution-prototype)
-- &nbsp;&nbsp;[5.5、效果总结](#result-prototype)
 
 <h2 id="pattern">1、模式简介</h2>
 
@@ -561,5 +560,69 @@ class BloggsContactEncoder extends ContactEncoder
 
  <h5 id="solution-prototype">5.4、解决</h5>
  
+ ```php
+ <?php 
+
+class sea{}
+
+class EarthSea extends sea{}
+
+class MarsSea extends sea{}
+
+class Plains{}
+
+class EarthPlains extends Plains{}
+
+class MarsPlain extends Plains{}
+
+class Forest{}
+
+class EarthForest extends Forest{}
+
+class MarsForest extends Forest{}
+
+class TerrainFactory
+{
+    private $sea;
+    private $forest;
+    private $plains;
+
+    function __construct(Sea $sea, Plains $plains,Forest $forest)
+    {
+        $this->sea = $sea;
+        $this->plains = $plains;
+        $this->forest = $forest;
+    }
+
+    function getSea()
+    {
+        return clone $this->sea;
+    }
+
+    function getPlain()
+    {
+        return clone $this->plains;
+    }
+
+    function getForeast()
+    {
+        return clone $this->forest;
+    }
+}
+
+$factory = new TerrainFactory(new EarthSea(), new EarthPlains(), new  EarthForest);
+
+var_dump($factory->getSea());
+var_dump($factory->getPlain());
+var_dump($factory->getForeast());
+
+//输出
+class EarthSea#5 (0) {
+}
+class EarthPlains#5 (0) {
+}
+class EarthForest#5 (0) {
+}
+ ```
  
  
