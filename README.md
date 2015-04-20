@@ -41,6 +41,12 @@
 - &nbsp;&nbsp;[4.3、问题](#issue-abstractFactory)
 - &nbsp;&nbsp;[4.4、解决](#solution-abstractFactory)
 - &nbsp;&nbsp;[4.5、效果总结](#result-abstractFactory)
+- [5、原型模式(prototype)](#prototype)
+- &nbsp;&nbsp;[5.1、概念](#what-is-prototype)
+- &nbsp;&nbsp;[5.2、适合场景](#when-use-prototype)
+- &nbsp;&nbsp;[5.3、问题](#issue-prototype)
+- &nbsp;&nbsp;[5.4、解决](#solution-prototype)
+- &nbsp;&nbsp;[5.5、效果总结](#result-prototype)
 
 <h2 id="pattern">1、模式简介</h2>
 
