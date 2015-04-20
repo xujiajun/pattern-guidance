@@ -41,11 +41,17 @@
 - &nbsp;&nbsp;[4.3、问题](#issue-abstractFactory)
 - &nbsp;&nbsp;[4.4、解决](#solution-abstractFactory)
 - &nbsp;&nbsp;[4.5、效果总结](#result-abstractFactory)
-- [5、原型模式(prototype)](#prototype)
+- [5、原型模式(Prototype)](#prototype)
 - &nbsp;&nbsp;[5.1、概念](#what-is-prototype)
 - &nbsp;&nbsp;[5.2、适合场景](#when-use-prototype)
 - &nbsp;&nbsp;[5.3、问题](#issue-prototype)
 - &nbsp;&nbsp;[5.4、解决](#solution-prototype)
+- [6、组合模式(Composite)](#composite)
+- &nbsp;&nbsp;[6.1、概念](#what-is-composite)
+- &nbsp;&nbsp;[6.2、适合场景](#when-use-composite)
+- &nbsp;&nbsp;[6.3、问题](#issue-composite)
+- &nbsp;&nbsp;[6.4、解决](#solution-composite)
+- &nbsp;&nbsp;[6.5、效果](#result-composite)
 
 <h2 id="pattern">1、模式简介</h2>
 
@@ -617,12 +623,12 @@ var_dump($factory->getPlain());
 var_dump($factory->getForeast());
 
 //输出
-class EarthSea#5 (0) {
-}
-class EarthPlains#5 (0) {
-}
-class EarthForest#5 (0) {
-}
+//class EarthSea#5 (0) {
+//}
+//class EarthPlains#5 (0) {
+//}
+//class EarthForest#5 (0) {
+//}
  ```
  
  
