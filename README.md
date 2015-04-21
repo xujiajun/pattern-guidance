@@ -8,7 +8,7 @@
 前言
 ----
 
-点击右上角的 **[Watch](https://github.com/xujiajun/Learning-Pattern/subscription)** 进行订阅，点击 Star 进行收藏。
+点击右上角的 **[Watch](https://github.com/xujiajun/Learning-Pattern/subscription)** 进行订阅，点击 Star 进行收藏。[点击讨论](https://github.com/xujiajun/Pattern-guidance/issues)
 
 <h2>目录</h2>
 
