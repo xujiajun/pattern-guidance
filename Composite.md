@@ -4,7 +4,7 @@
 
 将一组对象组合为可像单个对象一样被使用的结构
 
-<h5 id="composite-roles">角色</h5>
+<h5 id="composite-roles">6.2、角色</h5>
 
 1、Component 是组合中的对象声明接口，在适当的情况下，实现所有类共有接口的默认行为。声明一个接口用于访问和管理Component子部件。
 
@@ -12,13 +12,13 @@
 
 3、Composite 定义有枝节点行为，用来存储子部件，在Component接口中实现与子部件有关操作，如增加(add)和删除(remove)等。
 
-<h5 id="when-use-composite">6.2、适合场景</h5>
+<h5 id="when-use-composite">6.3、适合场景</h5>
  
 1、你想表示对象的部分-整体层次结构
 
 2、你希望用户忽略组合对象与单个对象的不同，用户将统一地使用组合结构中的所有对象。
  
- <h5 id="issue-composite">6.3、问题</h5>
+ <h5 id="issue-composite">6.4、问题</h5>
  
  我们回到上回虚构的场景，以“文明”的游戏为基础，设计一个系统。玩家可以在由大量区块组成的地图上移动战斗单元。独立的单元可以被组合来一起移动。ok，我先来定义战斗单元：
  
@@ -103,3 +103,115 @@ function bombardStrength()
 象相似，但是它也有一些自己的特性。虽然我们可以通过改进Army类来处理运兵船对象。但是我们知道以后会有更多对部队进行组合
 
 的需求。显然，我们需要一个更加灵活的模型
+
+<h5 id="solution-composite">6.5、解决</h5>
+
+组合模式定义了一个单根继承体系，使具有截然不同职责的集合可以并肩工作。
+
+我们重写Unit抽象类
+
+```php
+abstract class Unit
+{
+   abstract function addUnit(Unit $unit);
+   abstract function removeUnit(Unit $unit);
+   abstract function bombardStrength();
+}
+```
+
+可以看到，我们为所有的Unit对象设计了基本功能。现在看看一个组合对象是如何实现这些抽象方法的:
+
+```php
+
+<?php 
+
+class Army extends Unit
+{
+    private $units = array();
+
+    function addUnit(Unit $unit)
+    {
+        if (in_array($unit,$this->units,true)) {
+            return;
+        }
+
+        $this->units[] = $unit;
+    }
+
+    function removeUnit(Unit $unit)
+    {
+        $units = array();
+
+        foreach ($this->units as $thisUnit) {
+            if ($thisUnit != $unit) {
+                $unit[] = $thisUnit;
+            }
+        }
+    }
+
+    function bombardStrength()
+    {
+        $ret  = 0;
+
+        foreach ($this->units as $unit) {
+            $ret += $unit->bombardStrength();
+        }
+
+        return $ret;
+    }
+}
+
+
+```
+
+组合模式的一个问题是如何实现add和remove方法。一般组合模式会在抽象类中添加add和remove方法。这可以确保模式中的所有类都
+
+是共享同一个接口，但这同时也意味着局部必须实现这些方法:
+
+```php
+
+class unitException extends Exception {}
+
+class Archer extends Unit
+{
+
+     function addUnit(Unit $unit)
+     {
+        throw new Exception(get_class($this)." is a leaf");
+     }
+
+     function removeUnit(Unit $unit)
+     {
+        throw new Exception(get_class($this)." is a leaf");
+     }
+
+     function bombardStrength()
+     {
+        return 4;
+     }
+}
+
+```
+
+如上所示,我们不希望用到addUnit、removeUnit,所以用到的时候,我们抛出异常来处理。
+
+我们修改下Unit类的addUnit和removeUnit,要不然我们所有的局部类的add和remove都要改。
+
+```php
+abstract class Unit
+{
+    abstract function bombardStrength();
+
+    function addUnit(Unit $unit)
+    {
+        throw new Exception(get_class($this)." is a leaf");
+    }
+
+    function removeUnit(Unit $unit)
+    {
+       throw new Exception(get_class($this)." is a leaf");
+    }
+}
+```
+这样做好处可以去除局部类中的重复的代码,但是组合类不再需要强制性实现addUnit()和removeUnit()方法了。
+
