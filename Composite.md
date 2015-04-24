@@ -215,3 +215,97 @@ abstract class Unit
 ```
 这样做好处可以去除局部类中的重复的代码,但是组合类不再需要强制性实现addUnit()和removeUnit()方法了。
 
+```php
+//client
+$mainArmy->addUnit(new Archer());
+$mainArmy->addUnit(new Archer());
+
+$subArmy = new Army();
+$subArmy->addUnit(new Archer());
+$mainArmy->addUnit($subArmy);
+//输出总的攻击强度
+echo $mainArmy->bombardStrength();//输出12
+```
+
+<h5 id="result-composite">6.6、效果总结</h5>
+
+不知道看到现在,你有没有发现什么问题。Archer这个类明明不需要add和remove的方法，为什么还有这两个冗余方法。这就是组合模
+式的原则便是局部类和组合类具有同样的接口。
+
+那我们可不可以剥离Unit的add和remove方法:
+
+```php
+abstract class Unit 
+{
+    function getComposite()
+    {
+        return null;
+    }
+
+    abstract function bombardStrength();
+}
+```
+
+再抽象出来一个类,甚至实现部分方法:
+
+```php
+abstract class CompositeUnit extends Unit
+{
+    private $units = array();
+
+    function getComposite()
+    {
+        return $this;
+    }
+
+    protected function units()
+    {
+        return $this->units;
+    }
+
+   function removeUnit(Unit $unit)
+   {
+       $units = array();
+
+       foreach ($this->units as $thisUnit) {
+           if ($thisUnit != $unit) {
+               $unit[] = $thisUnit;
+           }
+       }
+   }
+
+   function addUnit(Unit $unit)
+   {
+       if (in_array($unit,$this->units,true)) {
+           return;
+       }
+
+       $this->units[] = $unit;
+   }
+}
+
+```
+
+注意：我们增加了`getComposite`这个方法，目的是区分是否是compositeUnit本身。
+
+
+讲讲组合模式的缺陷,简化的前提是使所有的类都继承自同一个基类。简化的好处有时候会导致对象类型安全上的代价:假如有个Cavalry对象, 游戏规则规定不能将马匹放在运兵船上,这个时候没有自动化的方式强制执行规则,怎么办？
+
+```php
+function addUnit(Unit $unit)
+{
+  function addUnit(Unit $unit)
+  {
+  //手动判断下
+  if( $unit instanceof Cavalry)
+  {
+    throw new UnitException('不要将马匹放在运兵船!');
+  }
+  super::addUnit($unit);
+}
+```
+这样模型会变得复杂。特殊对象越多,用组合模式显得弊大于利。
+
+另外,如果一个对象树中有大量的对象。比如上面的例子（Army类调用计算攻击强度方法）,可能一个简单的调用,可能导致系统奔溃。
+
+总的来说,如果你想像对待单个对象一样对待组合对象，那么组合对象十分游泳。另一方面,组合模式又依赖于它组成部分的简单性。随着我们引入复杂的规则，代码会越来越难维护。
