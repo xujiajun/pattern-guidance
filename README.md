@@ -18,3 +18,4 @@
 - [4、抽象工厂模式(AbstractFactory)](AbstractFactory.md)
 - [5、原型模式(Prototype)](Prototype.md)
 - [6、组合模式(Composite)](Composite.md)
+- [7、装饰模式(Decorator)](Decorator.md)
