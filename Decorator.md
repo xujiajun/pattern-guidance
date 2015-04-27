@@ -55,3 +55,45 @@ echo $tile->getWealthFactor();//输出4
 似乎很完美了,现在问题来了,如果既要获取含有钻石又被污染的对象呢？
 
 我们只能再加一个"既要获取含有钻石又被污染的类",这样，功能定义完全依赖继承体系，会导致类的数量很多。而且代码会产生重复。
+
+<h5>7.2、实现</h5>
+
+```php
+abstract class Tile
+{
+    abstract function getWealthFactor();//获取收益
+}
+
+
+class Plains extends Tile
+{
+    private $wealthfactor = 2;
+
+    function getWealthFactor()
+    {
+        return $this->wealthfactor;
+    }
+}
+
+abstract class TileDecorator extends Tile
+{
+    protected $tile;
+    function __construct(Tile $tile)
+    {
+        $this->tile = $tile;
+    }
+}
+
+class DiamondDecotor extends TileDecorator
+{
+    function getWealthFactor()
+    {
+        return $this->tile->getWealthFactor()+2;
+    }
+}
+
+//client
+
+$tile = new DiamondDecotor(new Plains());
+echo $tile->getWealthFactor();//输出4
+```
