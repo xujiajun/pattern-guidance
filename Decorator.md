@@ -97,3 +97,7 @@ class DiamondDecotor extends TileDecorator
 $tile = new DiamondDecotor(new Plains());
 echo $tile->getWealthFactor();//输出4
 ```
+
+<h5>7.3、效果</h5>
+
+这样的模型极具有扩展性。我们可以非常轻松地添加新的装饰器或者新的组件。通过使用大量的装饰器,我们可以在运行时创建极为灵活的结构。本例中的组件类Plains的行为可以很方便地改变,而不需要改变原来的类。
