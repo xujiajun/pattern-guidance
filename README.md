@@ -1,9 +1,9 @@
 系统学习设计模式（PHP代码演示）
 ====
-本文由 [xujiajun][xujiajun] 整理、编辑并在 [CC BY-SA 3.0][CC] 协议下发布，主要为了给自己和各位朋友作为系统学习设计模式的参考资料。更多请关注 [superu.org][superu]
+本文由 [xujiajun][xujiajun] 整理、编辑并在 [CC BY-SA 3.0][CC] 协议下发布，主要为了给自己和各位朋友作为系统学习设计模式的参考资料。
 [CC]: http://zh.wikipedia.org/wiki/Wikipedia:CC "Wiki: CC"
 [xujiajun]:http://xujiajun.cn
-[superu]:http://superu.org
+
 - - - 
 前言
 ----
@@ -19,3 +19,4 @@
 - [5、原型模式(Prototype)](Prototype.md)
 - [6、组合模式(Composite)](Composite.md)
 - [7、装饰模式(Decorator)](Decorator.md)
+- [8、外观模式(Facade)](Facade.md)
