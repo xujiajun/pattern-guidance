@@ -171,7 +171,7 @@ abstract class CommsManager
 
 class BloggsCommsManger extends CommManager
 {
-    fucntion getHeaderText()
+    function getHeaderText()
     {
         return "Bloggs.. hearder\n";
     }
@@ -189,7 +189,7 @@ class BloggsCommsManger extends CommManager
 
 class MegaCommsManger extends CommManager
 {
-    fucntion getHeaderText()
+    function getHeaderText()
     {
         return "Mega.. hearder\n";
     }
