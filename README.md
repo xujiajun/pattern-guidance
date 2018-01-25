@@ -1,4 +1,4 @@
-系统学习设计模式（PHP代码演示）
+系统学习设计模式（PHP、Golang）
 ====
 本文由 [xujiajun](https://github.com/xujiajun) 整理、编辑并在 [CC BY-SA 3.0][CC] 协议下发布，主要为了给自己和各位朋友作为系统学习设计模式的参考资料。
 [CC]: http://zh.wikipedia.org/wiki/Wikipedia:CC "Wiki: CC"
