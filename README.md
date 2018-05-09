@@ -1,4 +1,4 @@
-系统学习设计模式（PHP、Golang） <a href="https://travis-ci.org/xujiajun/pattern-guidance"><img src="https://travis-ci.org/xujiajun/pattern-guidance.svg?branch=master" alt="Build Status"></a>
+系统学习设计模式（PHP、Java、Golang） <a href="https://travis-ci.org/xujiajun/pattern-guidance"><img src="https://travis-ci.org/xujiajun/pattern-guidance.svg?branch=master" alt="Build Status"></a>
 ====
 
 
