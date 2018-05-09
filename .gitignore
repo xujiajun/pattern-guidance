@@ -1,2 +1,6 @@
 .DS_Store
 .idea/
+java/target/*
+java/target
+java/out/*
+java/.idea/
